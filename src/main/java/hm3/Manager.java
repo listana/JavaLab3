@@ -1,4 +1,4 @@
 package hm3;
 
-public class Manager {
+public class Manager extends Employee {
 }

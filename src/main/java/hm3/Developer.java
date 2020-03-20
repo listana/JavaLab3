@@ -1,4 +1,4 @@
 package hm3;
 
-public class Developer {
+public class Developer extends Employee {
 }
