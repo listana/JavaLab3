@@ -1,6 +1,6 @@
-package homework3;
+package hm3;
 
-public class Human {
+public abstract class Human {
 
     String name;
     String sirname;
@@ -27,8 +27,12 @@ public class Human {
         return sleep;
     }
 
-    void sleep(){}
-    void wakeUp(){}
+    void sleep(){
+        sleep = true;
+    }
+    void wakeUp(){
+        sleep = false;
+    }
     void intoduce(){
         System.out.println("Здаров! Я " + name);
     }
