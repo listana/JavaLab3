@@ -6,8 +6,8 @@ package hm3;
 public class SleepException extends RuntimeException {
 
     // непроверяемое исключение. Не должно срабатывать, должны исключатьсяч такие ситуации в коде
-    public SleepException(Human human){
-        System.out.println(human.toString()+" is sleeping! Can't do anything while sleeping. Wake him up first");
+    public SleepException(Human human) {
+        System.out.println(human.toString() + " is sleeping! Can't do anything while sleeping. Wake him up first");
     }
 
 }

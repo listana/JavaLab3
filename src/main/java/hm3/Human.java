@@ -9,11 +9,12 @@ public abstract class Human {
     //  создать логическое поле sleep и метод isSleep, который будет бросать исключение SleepException
     boolean sleep;
 
-    public Human(){
+    public Human() {
         name = "default_name";
         sirname = "default_sirname";
         age = 30;
     }
+
     public Human(String name, String sirname, int age) {
         this.name = name;
         this.sirname = sirname;
@@ -21,26 +22,27 @@ public abstract class Human {
     }
 
     boolean isSleep() {
-        if(sleep) {
+        if (sleep) {
             throw new SleepException(this);
         }
         return sleep;
     }
 
-    void sleep(){
+    void sleep() {
         sleep = true;
     }
-    void wakeUp(){
+
+    void wakeUp() {
         sleep = false;
     }
-    void intoduce(){
+
+    void intoduce() {
         System.out.println("Здаров! Я " + name);
     }
 
     // переопределить метод toString так чтобы он возвращал имя и фамилию через пробел
-   // @Override
-    public String toString()
-    {
+    // @Override
+    public String toString() {
         return name + " " + sirname;
     }
 
