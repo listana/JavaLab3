@@ -2,12 +2,25 @@ package hm3;
 
 public abstract class Human {
 
-    String name;
-    String sirname;
-    int age;
+    private String name;
+    private String sirname;
+    private int age;
 
     //  создать логическое поле sleep и метод isSleep, который будет бросать исключение SleepException
     boolean sleep;
+
+    public String Name(){
+        return name;
+    }
+
+    public String Sirname(){
+        return sirname;
+    }
+
+    public int Age(){
+        return age;
+    }
+
 
     public Human() {
         name = "default_name";
@@ -37,7 +50,7 @@ public abstract class Human {
     }
 
     void intoduce() {
-        System.out.println("Здаров! Я " + name);
+        System.out.println("Здравствуйте! Я " + name);
     }
 
     // переопределить метод toString так чтобы он возвращал имя и фамилию через пробел
