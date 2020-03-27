@@ -6,25 +6,22 @@ public class Student extends Human implements BookReader, BookOwner {
     private Book book;
 
     // поля с количеством прочитанных книг и страниц
-    private int readPageCount = 0;
-    private int readBooks = 0;
+    private int pagesHasRead = 0;
+    private int booksHasRead = 0;
 
-    public int ReadPageCount() {
-        return readPageCount;
+    public int PagesHasRead() {
+        return pagesHasRead;
     }
 
-    public int ReadBooks() {
-        return readBooks;
+    public int BooksHasRead() {
+        return booksHasRead;
     }
+
 
     public Student(String name, String sirname, int age) {
         super(name, sirname, age);
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 
     public Student() {
         super();
@@ -32,6 +29,11 @@ public class Student extends Human implements BookReader, BookOwner {
 
     //- делает +1 к прочитанным книгам и должен правильно увеличивать количество страниц
     public void readBook(Book book) {
+        if (isSleep()) {
+            return;
+        }
+        pagesHasRead += book.PageCount();
+        booksHasRead++;
     }
 
 //    метод addBook должен
@@ -40,6 +42,9 @@ public class Student extends Human implements BookReader, BookOwner {
 //            (нужно указать у какого студента какая книга уже есть и какую книгу он не може взять)
 
     public void addBook(Book book) {
+        if (isSleep()) {
+            return;
+        }
         if (this.book != null) {
             throw new TakeBookException(toString() + " не может взять книгу " + this.book.toString() +
                     ", т.к. уже взял " + book.toString());
@@ -54,7 +59,9 @@ public class Student extends Human implements BookReader, BookOwner {
 //        - если у студента нет никакой книги (поле book = null) бросить TakeBookException и выводить в консоль соответствующее сообщение
 
     public Book giveBook(String bookName) {
-
+        if (isSleep()) {
+            return null;
+        }
         if (book == null) {
             throw new TakeBookException("У студента " + toString() + " нет книг, нечего выбрасывать");
         }
@@ -70,6 +77,9 @@ public class Student extends Human implements BookReader, BookOwner {
 
     //  - присваивает полю book значение null и ввыводит сообщение о том что такйо то студент выбросил такуюто книгу
     public void dropBook() {
+        if (isSleep()) {
+            return;
+        }
         System.out.println("Студент " + this.toString() + " выбросил книгу " + book.toString());
         book = null;
     }
