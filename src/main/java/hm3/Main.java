@@ -10,12 +10,16 @@ public class Main {
         st2.intoduce();
         st1.intoduce();
 
+
         st2.addBook(new Book("Лев Толстой", "Война и мир", 55555));
        // st2.addBook(new Book("Лев Толстой", "Война и мир", 55555));
 
         st2.dropBook();
         st2.addBook(new Book("Лев Толстой", "Анна Каренина", 55555));
-        Book bb = st2.giveBook("Анна Каренина");
+
+        Library lib = new Library();
+        Book bb = st2.giveBook( lib,"Анна Каренина");
         System.out.println(bb.toString());
+
     }
 }

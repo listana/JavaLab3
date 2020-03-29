@@ -7,7 +7,7 @@ public class SleepException extends RuntimeException {
 
     // непроверяемое исключение. Не должно срабатывать, должны исключатьсяч такие ситуации в коде
     public SleepException(Human human) {
-        System.out.println(human.toString() + " is sleeping! Can't do anything while sleeping. Wake him up first");
+        System.out.println(human.toString() + " сейчас спит. Не может ничего делать, пока спит. Нужно сначала разбудить");
     }
 
 }

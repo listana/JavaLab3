@@ -28,7 +28,7 @@ public class Student extends Human implements BookReader, BookOwner {
     }
 
     //- делает +1 к прочитанным книгам и должен правильно увеличивать количество страниц
-    public void readBook(Book book) {
+    public void readBook() {
         if (isSleep()) {
             return;
         }
@@ -58,7 +58,13 @@ public class Student extends Human implements BookReader, BookOwner {
 //            (должно быть информативное сообщение)
 //        - если у студента нет никакой книги (поле book = null) бросить TakeBookException и выводить в консоль соответствующее сообщение
 
-    public Book giveBook(String bookName) {
+    public Book giveBook(Object obj, String bookName) {
+
+        if (obj instanceof Library == false){
+            throw new TakeBookException("Ожидается объект Library");
+        }
+
+        Library library = (Library) obj;
         if (isSleep()) {
             return null;
         }
@@ -69,9 +75,10 @@ public class Student extends Human implements BookReader, BookOwner {
             throw new TakeBookException("У студента " + toString() + " нет книги \"" + bookName + "\", но есть " + book.toString());
         }
 
-        Book res = new Book(book);
+        Book copy = new Book(book);
         book = null;
-        return res;
+        library.addBook(copy);
+        return copy;
     }
 
 
@@ -80,7 +87,9 @@ public class Student extends Human implements BookReader, BookOwner {
         if (isSleep()) {
             return;
         }
-        System.out.println("Студент " + this.toString() + " выбросил книгу " + book.toString());
-        book = null;
+        if (book != null) {
+            System.out.println("Студент " + this.toString() + " выбросил книгу " + book.toString());
+            book = null;
+        }
     }
 }
