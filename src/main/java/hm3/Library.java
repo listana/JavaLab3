@@ -1,17 +1,28 @@
 package hm3;
 
+/**
+ * Класс "Библиотека"
+ * Может хранить максимум 5 книг
+ * и выдавать их на руки людям
+ */
 public class Library implements BookOwner {
 
-    Book books[];
-    final int BOOKS_MAX_COUNT = 5;
+    private Book books[];
+    public final int BOOKS_MAX_COUNT = 5;
 
+    /**
+     * Конструктор по умолчанию, других не предусмотрено
+     */
     public Library() {
         books = new Book[BOOKS_MAX_COUNT];
 
     }
-
-    // проверяет, есть ли такая книга в библиотеке
-    int HaveBook(Book book) {
+    /**
+     * проверяет, есть ли такая книга в библиотеке
+     * @param book
+     * @return
+     */
+    private int HaveBook(Book book) {
         if(book == null) throw new NullPointerException("book is null");
 
         for (int i = 0; i < BOOKS_MAX_COUNT; i++) {
@@ -21,8 +32,13 @@ public class Library implements BookOwner {
         }
         return -1;
     }
-    // ищет книгу по названию
-    int HaveBook(String bookName){
+
+    /**
+     * ищет книгу по названию
+     * @param bookName
+     * @return
+     */
+    private int HaveBook(String bookName){
         for(int i=0; i<BOOKS_MAX_COUNT; i++){
             if (books[i] != null && books[i].Name().equals(bookName)){
                 return i;
@@ -31,10 +47,13 @@ public class Library implements BookOwner {
         return -1;
     }
 
-    //     - проверяет есть ли в массиве такая книга
-//        - если нет, то записывает ее в свободную ячеку массива и вернуть true
-//            - если свободной ячейки нет, то бросам TakeBookException
-//        - если такая книга есть, то вывести сообщение о то вывести сообщение о том что такая книга уже есть и вернуть false
+    /**
+     * проверяет есть ли в массиве такая книга
+     * если нет, то записывает ее в свободную ячеку массива и вернуть true
+     * если свободной ячейки нет, то бросам TakeBookException
+     * если такая книга есть, то вывести сообщение о то вывести сообщение о том что такая книга уже есть и вернуть false
+     * @param book
+     */
     public void addBook(Book book) {
         if (HaveBook(book) > -1) {
             System.out.println("Книга " + book.toString() + " уже есть в библиотеке.");
@@ -49,9 +68,14 @@ public class Library implements BookOwner {
         throw new TakeBookException("В библиотеке недостататочно свободного места!");
     }
 
-//    - роверяет есть ли в массиве такая книга
-//        - если нет, то бросается исключение TakeBookException
-//        - если есть, то возвращается эта книга а ячека в массиве "очищается"
+    /**
+     * проверяет есть ли в массиве такая книга
+     * если нет, то бросается исключение TakeBookException
+     * если есть, то возвращается эта книга а ячека в массиве "очищается"
+     * @param obj
+     * @param bookName
+     * @return
+     */
     public Book giveBook(Object obj, String bookName) {
 
         if (obj instanceof Student == false){
@@ -70,9 +94,11 @@ public class Library implements BookOwner {
         return copy;
     }
 
-
-    // возвращает количество кни в наличии
-    int getSize() {
+    /**
+     * возвращает количество кни в наличии
+     * @return
+     */
+    public int getSize() {
         int count = 0;
         for(int i=0; i<BOOKS_MAX_COUNT; i++){
             if (books[i] != null){

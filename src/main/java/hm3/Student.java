@@ -69,7 +69,7 @@ public class Student extends Human implements BookReader, BookOwner {
             return null;
         }
         if (book == null) {
-            throw new TakeBookException("У студента " + toString() + " нет книг, нечего выбрасывать");
+            throw new TakeBookException("У студента " + toString() + " нет книг, нечего возвращать");
         }
         if (!book.Name().equals(bookName)) {
             throw new TakeBookException("У студента " + toString() + " нет книги \"" + bookName + "\", но есть " + book.toString());

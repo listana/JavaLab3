@@ -31,11 +31,11 @@ class EmployeeTest {
             library = new Library();
             books = new Book[5];
         }
-        books[0] = new Book("Отцы и Дети", "И.С. Тургенев", 10);
-        books[1] = new Book("Сказки", "А.С. Пушкин", 20);
-        books[2] = new Book("Горе от ума", "А. Грибоедов", 30);
-        books[3] = new Book("Лев Толстой", "Анна Каренина", 40);
-        books[4] = new Book("Лев Толстой", "Война и мир", 50);
+        books[0] = new Book("И.С. Тургенев", "Отцы и Дети", 10);
+        books[1] = new Book("А.С. Пушкин", "Сказки", 20);
+        books[2] = new Book("А. Грибоедов", "Горе от ума", 30);
+        books[3] = new Book("Анна Каренина", "Лев Толстой", 40);
+        books[4] = new Book("Война и мир", "Лев Толстой", 50);
     }
 
     @BeforeEach
